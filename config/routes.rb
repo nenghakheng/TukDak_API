@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root "users#index"
 
   resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  # Defines the root path route ("/")
-  root "users#index"
+
+  resources :budgets, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
+  resources :categories, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
+  resources :transactions, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
+  resources :receipt_items, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 end
