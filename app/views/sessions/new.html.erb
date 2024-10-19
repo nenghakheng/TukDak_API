@@ -1,0 +1,31 @@
+<h1>Login to your account</h1>
+<% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+<% end %>
+
+
+<%= form_for :session, url: login_path do |f| %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.submit "Login" %>
+<% end %>
+
+<p>Don't have an account? <%= link_to "Sign up", signup_path %></p>
+
+<div class="mt-6">
+  <div class="relative">
+    <div class="absolute inset-0 flex items-center">
+      <div class="w-full border-t border-gray-300"></div>
+    </div>
+    <div class="relative flex justify-center text-sm">
+      <span class="px-2 bg-white text-gray-500">
+        Or continue with
+      </span>
+    </div>
+  </div>
+
+  <%= button_to "log in",  '/auth/google_oauth2',  data: { "turbo": false } %> 
+
+</div>
