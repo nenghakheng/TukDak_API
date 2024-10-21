@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'application#index'
+
+  # OmniAuth routes
+  get '/auth/:provider/callback', to: 'sessions#omniauth'
+  get '/auth/failure', to: redirect('/')
+
+  # authentication routes
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
 
   resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  # Defines the root path route ("/")
-  root "users#index"
 end
